@@ -1,5 +1,6 @@
 .actionScriptProperties
 actionScriptProperties
+*.actionScriptProperties
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
