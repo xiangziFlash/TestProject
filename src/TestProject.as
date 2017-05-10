@@ -1,5 +1,8 @@
 package
 {
+	import com.MainContainer;
+	import com.notification.NotificationFactory;
+	
 	import flash.display.Sprite;
 	
 	/**
@@ -10,20 +13,27 @@ package
 	 */
 	public class TestProject extends Sprite
 	{
-		private var _master:Sprite;
+		private var _mainContainer:MainContainer;
 		
 		public function TestProject()
 		{
+			initLogic();
 			init();
 		}
 		
 		private function init():void
 		{
-			_master = new Sprite();
-			_master.graphics.beginFill(0);
-			_master.graphics.drawRect(0,0,100,100);
-			_master.graphics.endFill();
-			this.addChild(_master);
+			_mainContainer = NotificationFactory.getLogic(MainContainer.NAME) as MainContainer;
+			this.addChild(_mainContainer);
+		}
+		
+		/**
+		 * 注册逻辑
+		 * */
+		private function initLogic():void
+		{
+			NotificationFactory.registerLogic(new MainContainer());
+//			var sp:DisplaySprite=NotificationFactory.getLogic(DisplaySprite.NAME) as DisplaySprite;
 		}
 	}
 }
